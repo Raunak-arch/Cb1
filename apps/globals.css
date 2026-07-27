@@ -1,0 +1,67 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@theme inline {
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-geist-mono);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--primary);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--primary-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--primary-foreground);
+  --color-review: var(--review);
+  --color-review-foreground: var(--primary-foreground);
+  --color-classic: var(--classic);
+  --color-classic-foreground: var(--primary-foreground);
+  --color-hero: var(--hero);
+  --color-hero-foreground: var(--primary-foreground);
+}
+
+:root {
+  color-scheme: light;
+  --background: #f8fafc;
+  --foreground: #172033;
+  --card: #ffffff;
+  --primary: #4f46e5;
+  --primary-foreground: #ffffff;
+  --muted: #e9eef6;
+  --muted-foreground: #64748b;
+  --border: #dce3ed;
+  --destructive: #c83f49;
+  --success: #16845b;
+  --review: #b36a13;
+  --classic: #1d3d6d;
+  --hero: #162643;
+}
+
+@layer base {
+  * { @apply border-border outline-ring/40; }
+  html { @apply bg-background; }
+  body { @apply bg-background text-foreground font-sans; }
+  button, label, select, input, textarea { -webkit-tap-highlight-color: transparent; }
+  button { @apply cursor-pointer disabled:cursor-not-allowed disabled:opacity-45; }
+  :focus-visible { @apply outline-2 outline-offset-2 outline-ring; }
+}
+
+@layer components {
+  .primary-button { @apply inline-flex min-h-11 items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90; }
+  .ghost-button { @apply inline-flex min-h-11 items-center gap-2 rounded-lg border border-border bg-card px-3 py-2 text-sm font-semibold text-foreground hover:bg-muted; }
+  .icon-button { @apply inline-flex size-11 shrink-0 items-center justify-center rounded-lg border border-border bg-card text-foreground hover:bg-muted; }
+  .nav-button { @apply inline-flex min-h-11 items-center gap-2 rounded-lg px-3 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground; }
+  .field { @apply min-h-11 w-full rounded-lg border border-border bg-card px-3 py-2 text-base text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20; }
+  .eyebrow { @apply mb-1 text-xs font-bold uppercase tracking-wider text-primary; }
+  .primary-button svg, .ghost-button svg, .icon-button svg, .nav-button svg { @apply size-4 shrink-0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
